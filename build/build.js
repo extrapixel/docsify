@@ -9,7 +9,7 @@ const version = process.env.VERSION || require('../package.json').version
 const chokidar = require('chokidar')
 const path = require('path')
 
-const build = function(opts) {
+const build = function (opts) {
   rollup
     .rollup({
       input: opts.input,
@@ -23,7 +23,7 @@ const build = function(opts) {
         })
       ])
     })
-    .then(function(bundle) {
+    .then(function (bundle) {
       var dest = 'lib/' + (opts.output || opts.input)
 
       console.log(dest)
@@ -33,11 +33,11 @@ const build = function(opts) {
         strict: false
       })
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.error(err)
     })
 }
-const buildCore = function() {
+const buildCore = function () {
   build({
     input: 'src/core/index.js',
     output: 'docsify.js'
@@ -51,7 +51,7 @@ const buildCore = function() {
     })
   }
 }
-const buildAllPlugin = function() {
+const buildAllPlugin = function () {
   var plugins = [
     {name: 'search', input: 'search/index.js'},
     {name: 'ga', input: 'ga.js'},

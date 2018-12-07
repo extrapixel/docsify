@@ -6,7 +6,9 @@ const CONFIG = {
   noData: 'No Results!',
   paths: 'auto',
   depth: 2,
-  maxAge: 86400000 // 1 day
+  maxAge: 86400000, // 1 day
+  hideOtherSidebarContent: false,
+  namespace: undefined
 }
 
 const install = function (hook, vm) {
@@ -21,6 +23,8 @@ const install = function (hook, vm) {
     CONFIG.placeholder = opts.placeholder || CONFIG.placeholder
     CONFIG.noData = opts.noData || CONFIG.noData
     CONFIG.depth = opts.depth || CONFIG.depth
+    CONFIG.hideOtherSidebarContent = opts.hideOtherSidebarContent || CONFIG.hideOtherSidebarContent
+    CONFIG.namespace = opts.namespace || CONFIG.namespace
   }
 
   const isAuto = CONFIG.paths === 'auto'

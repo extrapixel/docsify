@@ -17,10 +17,10 @@
   <a href="https://gitter.im/docsifyjs/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link"><img alt="gitter" src="https://img.shields.io/gitter/room/docsifyjs/docsify.svg?style=flat-square"></a>
 </p>
 
-<p align="center">Glod Sponsor via <a href="https://opencollective.com/docsify">Open Collective</a></p>
+<p align="center">Gold Sponsor via <a href="https://opencollective.com/docsify">Open Collective</a></p>
 
 <p align="center">
-  <a href="https://opencollective.com/docsify/tiers/gold-sponsor/website">
+  <a href="https://opencollective.com/docsify/order/3254">
     <img src="https://opencollective.com/docsify/tiers/gold-sponsor.svg?avatarHeight=36">
   </a>
 </p>
@@ -36,7 +36,7 @@
 ## Features
 
 - No statically built html files
-- Simple and lightweight (~19kB gzipped)
+- Simple and lightweight (~21kB gzipped)
 - Smart full-text search plugin
 - Multiple themes
 - Useful plugin API
@@ -46,7 +46,9 @@
 
 ## Quick start
 
-Look at [this tutorial](https://docsify.js.org/#/quickstart) or [online demo](https://jsfiddle.net/7ztb8qsr/1/).
+Look at [this tutorial](https://docsify.js.org/#/quickstart)
+
+[![Edit 307qqv236](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/307qqv236)
 
 ## Showcase
 
@@ -103,6 +105,6 @@ This project exists thanks to all the people who contribute. [[Contribute](CONTR
 
 ## License
 
-MIT
+[MIT](LICENSE)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fdocsifyjs%2Fdocsify.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fdocsifyjs%2Fdocsify?ref=badge_large)

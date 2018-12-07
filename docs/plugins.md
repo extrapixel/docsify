@@ -37,7 +37,13 @@ By default, the hyperlink on the current page is recognized and the content is s
       },
 
       // Headline depth, 1 - 6
-      depth: 2
+      depth: 2,
+
+      hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+
+      // To avoid search index collision
+      // between multiple websites under the same domain
+      namespace: 'website-1',
     }
   }
 </script>
@@ -93,7 +99,7 @@ Medium's image zoom. Based on [medium-zoom](https://github.com/francoischalifour
 Exclude the special image
 
 ```markdown
-![](image.png ':no-zoom')
+![](image.png ":no-zoom")
 ```
 
 ## Edit on github
@@ -177,3 +183,15 @@ window.$docsify = {
   ]
 }
 ```
+
+## Tabs
+
+A docsify.js plugin for displaying tabbed content from markdown.
+
+- [Documentation & Demos](https://jhildenbiddle.github.io/docsify-tabs)
+
+Provided by [@jhildenbiddle](https://github.com/jhildenbiddle/docsify-tabs).
+
+## More plugins
+
+See [awesome-docsify](awesome?id=plugins)

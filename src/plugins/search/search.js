@@ -1,5 +1,16 @@
 let INDEXS = {}
-let helper
+
+const LOCAL_STORAGE = {
+  EXPIRE_KEY: 'docsify.search.expires',
+  INDEX_KEY: 'docsify.search.index'
+}
+
+function resolveExpireKey(namespace) {
+  return namespace ? `${LOCAL_STORAGE.EXPIRE_KEY}/${namespace}` : LOCAL_STORAGE.EXPIRE_KEY
+}
+function resolveIndexKey(namespace) {
+  return namespace ? `${LOCAL_STORAGE.INDEX_KEY}/${namespace}` : LOCAL_STORAGE.INDEX_KEY
+}
 
 function escapeHtml(string) {
   const entityMap = {
@@ -17,7 +28,7 @@ function escapeHtml(string) {
 function getAllPaths(router) {
   const paths = []
 
-  helper.dom.findAll('a:not([data-nosearch])').forEach(node => {
+  Docsify.dom.findAll('.sidebar-nav a:not(.section-link):not([data-nosearch])').forEach(node => {
     const href = node.href
     const originHref = node.getAttribute('href')
     const path = router.parse(href).path
@@ -34,9 +45,9 @@ function getAllPaths(router) {
   return paths
 }
 
-function saveData(maxAge) {
-  localStorage.setItem('docsify.search.expires', Date.now() + maxAge)
-  localStorage.setItem('docsify.search.index', JSON.stringify(INDEXS))
+function saveData(maxAge, expireKey, indexKey) {
+  localStorage.setItem(expireKey, Date.now() + maxAge)
+  localStorage.setItem(indexKey, JSON.stringify(INDEXS))
 }
 
 export function genIndex(path, content = '', router, depth) {
@@ -149,12 +160,14 @@ export function search(query) {
 }
 
 export function init(config, vm) {
-  helper = Docsify
-
   const isAuto = config.paths === 'auto'
-  const isExpired = localStorage.getItem('docsify.search.expires') < Date.now()
 
-  INDEXS = JSON.parse(localStorage.getItem('docsify.search.index'))
+  const expireKey = resolveExpireKey(config.namespace)
+  const indexKey = resolveIndexKey(config.namespace)
+
+  const isExpired = localStorage.getItem(expireKey) < Date.now()
+
+  INDEXS = JSON.parse(localStorage.getItem(indexKey))
 
   if (isExpired) {
     INDEXS = {}
@@ -171,11 +184,11 @@ export function init(config, vm) {
       return count++
     }
 
-    helper
+    Docsify
       .get(vm.router.getFile(path), false, vm.config.requestHeaders)
       .then(result => {
         INDEXS[path] = genIndex(path, result, vm.router, config.depth)
-        len === ++count && saveData(config.maxAge)
+        len === ++count && saveData(config.maxAge, expireKey, indexKey)
       })
   })
 }
